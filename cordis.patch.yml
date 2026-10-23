@@ -1,0 +1,14 @@
+# dsh-codex-runs bundle patch
+#
+# Insert one entry into the web profile's composition:
+#   - host half  (name: dsh-codex-runs -> exports["."] = lib/index.js) registers
+#     the read-only route GET /api/codex-runs;
+#   - client half is declared by package.json `dsh.client` (exports["./client"]),
+#     mounting a collapsible run-history panel in the top-right corner.
+#
+# Self-contained: the only data source is Codex CLI's own rollout files under
+# ~/.codex/sessions, so the panel works on any machine with Codex installed.
+# Nothing outside that tree is read and nothing is ever written.
+- insert:
+    - id: codex-runs
+      name: dsh-codex-runs
